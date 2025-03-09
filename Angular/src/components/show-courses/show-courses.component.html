@@ -1,0 +1,22 @@
+
+<div>קורסים</div>
+@if(courses.length > 0){
+<h1>רשימת קורסים</h1>
+<ul>
+    @for(c of courses; track c.title){
+    <li>
+        <h2>{{ c.title }}</h2>
+        <p>{{ c.description }} - תאור הקורס</p>
+        <div class="buttons">
+            @if(userRole==="teacher"){
+            <button (click)="delete(c.id)">❌</button>
+            <button (click)="editCourse(c.id)">🖊️</button>
+            <button (click)="showLesson(c,c.id)"
+            >לצפיה בקורס</button>
+            }
+           
+        </div>
+    </li>
+    }
+</ul>
+}

@@ -1,0 +1,14 @@
+<form [formGroup]="editCourseForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="title">Course title:</label>
+        <input type="text" id="title" formControlName="title" />
+    </div>
+
+    <div>
+        <label for="description">description:</label>
+        <input type="text" id="description" formControlName="description" />
+    </div>
+
+
+    <button type="submit" [disabled]="!editCourseForm.valid">edit</button>
+</form>

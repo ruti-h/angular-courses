@@ -1,0 +1,6 @@
+<button (click)="showCourses()">show</button>
+@if(userRole==='teacher'){
+    <button (click)="addCours()">add course</button>
+}
+<button (click)="home()">home</button>
+<router-outlet></router-outlet>
