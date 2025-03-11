@@ -5,7 +5,6 @@ import {
   OverlayModule,
   ScrollDispatcher
 } from "./chunk-IX525ZZE.js";
-import "./chunk-NYPPQ6UA.js";
 import {
   animate,
   state,
@@ -13,6 +12,7 @@ import {
   transition,
   trigger
 } from "./chunk-VA3AGJLU.js";
+import "./chunk-NYPPQ6UA.js";
 import {
   A11yModule,
   AriaDescriber,

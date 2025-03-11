@@ -1,6 +1,36 @@
+<div>
+    <h1>רשימת קורסים</h1>
+    @for(c of courses; track c.title){
+    <div class="container">
+        <div class="courses-grid">
+            <mat-card class="course-card">
+                <mat-card-header>
+                    <mat-card-title>{{ c.title }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{ c.description }} - תאור הקורס</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    @if(userRole==="teacher"){
+                    <button mat-icon-button color="warn" (click)="delete(c.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="editCourse(c.id)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    }
+                    <button mat-icon-button color="primary" (click)="showLesson(c, c.id)">
+                        <mat-icon>preview</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    }
+</div>
 
-<div>קורסים</div>
-@if(courses.length > 0){
+
+<!-- @if(courses.length > 0){
 <h1>רשימת קורסים</h1>
 <ul>
     @for(c of courses; track c.title){
@@ -11,12 +41,11 @@
             @if(userRole==="teacher"){
             <button (click)="delete(c.id)">❌</button>
             <button (click)="editCourse(c.id)">🖊️</button>
-            <button (click)="showLesson(c,c.id)"
-            >לצפיה בקורס</button>
+            <button (click)="showLesson(c,c.id)">לצפיה בקורס</button>
             }
-           
+
         </div>
     </li>
     }
 </ul>
-}
+} -->

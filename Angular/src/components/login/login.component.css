@@ -1,0 +1,46 @@
+.login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 8px;
+    background-color: #ffffff; /* צבע רקע לבן לטופס */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* צל קל מסביב לטופס */
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  button[mat-raised-button] {
+    margin-top: 20px;
+    background-color: #4caf50; /* צבע רקע בהיר לכפתור */
+    color: white; /* צבע טקסט לכפתור */
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-form-field.mat-focused .mat-form-field-outline { 
+    color: #4caf50; /* צבע קו מתאר */
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #4caf50; /* צבע קו מתאר עבה */
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-outline-thick {
+    color: #4caf50; /* צבע קו מתאר עבה */
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline-start, .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    color: #4caf50; /* צבע קו מתאר */
+  }
+  
+  .mat-input-element {
+    background-color: #ffffff; /* צבע רקע לשדות הקלט */
+    color: #000000; /* צבע טקסט לשדות הקלט */
+  }

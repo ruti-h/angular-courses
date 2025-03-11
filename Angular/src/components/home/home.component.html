@@ -1,6 +1,23 @@
-<button (click)="showCourses()">show</button>
-@if(userRole==='teacher'){
-    <button (click)="addCours()">add course</button>
-}
-<button (click)="home()">home</button>
-<router-outlet></router-outlet>
+<div class="background">
+
+<div class="button-container">
+    <button mat-raised-button color="primary" (click)="showCourses()">
+      <mat-icon>school</mat-icon>
+      Show Courses
+    </button>
+  
+    @if(userRole==='teacher'){
+      <button mat-raised-button color="accent" (click)="addCours()">
+        <mat-icon>add</mat-icon>
+        Add Course
+      </button>
+    }
+  
+    <button mat-raised-button color="warn" (click)="home()">
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+  </div>
+      
+</div>
+  <router-outlet></router-outlet>

@@ -1,0 +1,40 @@
+
+
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  
+  /* justify-content: center; מרכז את הכרטיסים */
+}
+
+.course-card {
+  width: 300px;
+  margin: 20px;
+}
+
+mat-card {
+  border-radius: 8px;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+}
+
+mat-card-header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+mat-card-title {
+  font-size: 1.5em;
+  color: #333;
+}
+
+mat-card-content p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}

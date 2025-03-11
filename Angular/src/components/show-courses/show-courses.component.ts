@@ -2,12 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../service/courses.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { ShowLessonComponent } from '../show-course/show-lesson.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-show-courses',
   standalone:true,
 
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule],
   templateUrl:'./show-courses.component.html',
   styleUrl:'./show-courses.component.css'
 })
@@ -23,13 +31,10 @@ export class ShowCoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  console.log("fbbfb");
   
     this.coursesService.getCourses().subscribe({
       next: (data) => {
-        debugger;
         console.log("coursegfggbbbbbbbbs",data);
-
         this.courses = data;
       },
       error: (error) => {

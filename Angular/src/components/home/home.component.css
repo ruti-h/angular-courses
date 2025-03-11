@@ -1,0 +1,21 @@
+/* .background {
+    background-image: url('https://www.yaniv-arad.com/wp-content/uploads/2020/11/Depositphotos_200597092_s-2019-1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  button[mat-raised-button] {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }

@@ -1,0 +1,41 @@
+.background {
+    background-image: url('https://easypress.co.il/wp-content/uploads/2020/10/website-3374825_640.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* גובה מלא של העמוד */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    text-align: center;
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(245, 245, 245, 0.9); /* צבע רקע בהיר עם שקיפות */
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* צל קל */
+}
+
+h1 {
+    font-size: 2em;
+    color: #333; /* צבע טקסט אלגנטי */
+}
+
+p {
+    font-size: 1.2em;
+    color: #666; /* צבע טקסט משני */
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 10px;
+}
+
+button[mat-raised-button] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}

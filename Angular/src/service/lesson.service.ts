@@ -21,18 +21,18 @@ export class LessonsService {
   }
 
   // שליפת שיעור לפי ID
-  getLessonById(id: string): Observable<any> {
+  getLessonById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}/lessons`, { headers: this.getAuthHeaders() });
   }
 
   // יצירת שיעור חדש
-  createLesson(courseId: string, title: string, content: string): Observable<any> {
+  createLesson(courseId: number, title: string, content: string): Observable<any> {
     const body = { title, content,courseId };
     return this.http.post(`${this.apiUrl}/${courseId}/lessons`, body, { headers: this.getAuthHeaders() });
   }
 
   // עדכון שיעור לפי ID
-  updateLesson(id: string, updates: any): Observable<any> {
+  updateLesson(id: number, updates: any, value: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}/lessons`, updates, { headers: this.getAuthHeaders() });
   }
 

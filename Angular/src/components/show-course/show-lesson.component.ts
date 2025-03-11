@@ -43,7 +43,18 @@ export class ShowLessonComponent {
     const navigation = this.router.getCurrentNavigation();
     this.courseId = this.rote.snapshot.paramMap.get('id');
     console.log("courseId:" + this.courseId)
-    this.courseData = navigation?.extras.state?.['courseData'];
+    this.courseData = sessionStorage.getItem('id');
+  }
+  ngOnInit() {
+    this.lessonService.getLessonsByCourse(this.courseId).subscribe(
+      (data) => {
+        console.log("lesons:"+data)
+        this.lessons = data; // שמירת המידע במערך
+      },
+      (error) => {
+        console.error('Error fetching users', error); // טיפול בשגיאות
+      }
+    );
   }
   delete(lessonId: number | undefined) {
     const courseId: number = this.courseData.id
@@ -63,29 +74,12 @@ export class ShowLessonComponent {
           console.error('Error deleting lesson', error); // טיפול בשגיאות
         }
       );
-  }
-  editCourse(lesson: any) {
-    const course = this.courseData
-    const courseData = JSON.parse(JSON.stringify(course));
-    this.router.navigate(['/NewLesson'], { state: { courseData, lesson } });
+    }
+  editLesson(id: number) {
+    this.courseId
+    this.router.navigate(['/edit-lesson', this.courseId,id]);
   }
   AddLesson() {
-    const course = this.courseData
-    const courseData = JSON.parse(JSON.stringify(course)); // המרת ה-Class לאובייקט פשוט
-    console.log("📤 נתונים שנשלחים לניווט:", courseData);
-    this.router.navigate(['/NewLesson'], { state: { courseData } });
-  }
-  ngOnInit() {
-
-
-    this.lessonService.getLessonsByCourse(this.courseId).subscribe(
-      (data) => {
-        console.log("lesons:"+data)
-        this.lessons = data; // שמירת המידע במערך
-      },
-      (error) => {
-        console.error('Error fetching users', error); // טיפול בשגיאות
-      }
-    );
+    this.router.navigate(['/add-lesson',this.courseId]);
   }
 }
