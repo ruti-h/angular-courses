@@ -21,8 +21,8 @@ export class LessonsService {
   }
 
   // שליפת שיעור לפי ID
-  getLessonById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}/lessons`, { headers: this.getAuthHeaders() });
+  getLessonById(id: number,lessonId:number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}/lessons/${lessonId}`, { headers: this.getAuthHeaders() });
   }
 
   // יצירת שיעור חדש
@@ -32,8 +32,8 @@ export class LessonsService {
   }
 
   // עדכון שיעור לפי ID
-  updateLesson(id: number, updates: any, value: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}/lessons`, updates, { headers: this.getAuthHeaders() });
+  updateLesson(id: number, courseId:number,updates: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${courseId}/lessons/${id}`, updates, { headers: this.getAuthHeaders() });
   }
 
   // מחיקת שיעור לפי ID

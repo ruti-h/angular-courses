@@ -7,6 +7,7 @@ import {
   style,
   ɵPRE_STYLE
 } from "./chunk-VA3AGJLU.js";
+import "./chunk-KIOHYQ5U.js";
 import {
   Injectable,
   RuntimeError,
@@ -3989,29 +3990,28 @@ var AnimationRendererFactory = class {
     return this.engine.whenRenderingDone();
   }
 };
-
 export {
-  getParentElement,
-  validateStyleProperty,
-  validateWebAnimatableStyleProperty,
-  containsElement,
-  invokeQuery,
-  NoopAnimationDriver,
   AnimationDriver,
-  AnimationStyleNormalizer,
-  NoopAnimationStyleNormalizer,
-  normalizeKeyframes,
-  camelCaseToDashCase,
-  allowPreviousPlayerStylesMerge,
-  WebAnimationsStyleNormalizer,
-  AnimationEngine,
-  WebAnimationsPlayer,
-  WebAnimationsDriver,
-  createEngine,
-  Animation,
-  BaseAnimationRenderer,
-  AnimationRenderer,
-  AnimationRendererFactory
+  NoopAnimationDriver,
+  Animation as ɵAnimation,
+  AnimationEngine as ɵAnimationEngine,
+  AnimationRenderer as ɵAnimationRenderer,
+  AnimationRendererFactory as ɵAnimationRendererFactory,
+  AnimationStyleNormalizer as ɵAnimationStyleNormalizer,
+  BaseAnimationRenderer as ɵBaseAnimationRenderer,
+  NoopAnimationStyleNormalizer as ɵNoopAnimationStyleNormalizer,
+  WebAnimationsDriver as ɵWebAnimationsDriver,
+  WebAnimationsPlayer as ɵWebAnimationsPlayer,
+  WebAnimationsStyleNormalizer as ɵWebAnimationsStyleNormalizer,
+  allowPreviousPlayerStylesMerge as ɵallowPreviousPlayerStylesMerge,
+  camelCaseToDashCase as ɵcamelCaseToDashCase,
+  containsElement as ɵcontainsElement,
+  createEngine as ɵcreateEngine,
+  getParentElement as ɵgetParentElement,
+  invokeQuery as ɵinvokeQuery,
+  normalizeKeyframes as ɵnormalizeKeyframes,
+  validateStyleProperty as ɵvalidateStyleProperty,
+  validateWebAnimatableStyleProperty as ɵvalidateWebAnimatableStyleProperty
 };
 /*! Bundled license information:
 
@@ -4022,4 +4022,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-5ZMAJVNH.js.map
+//# sourceMappingURL=browser-DT54SU27.js.map

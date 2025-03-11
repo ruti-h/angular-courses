@@ -76,6 +76,9 @@ export class ShowLessonComponent {
       );
     }
   editLesson(id: number) {
+    console.log("lessonId",id);
+    console.log("courseId",this.courseId);
+    
     this.courseId
     this.router.navigate(['/edit-lesson', this.courseId,id]);
   }
