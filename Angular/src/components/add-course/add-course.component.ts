@@ -22,7 +22,6 @@ export class AddCourseComponent {
   }
   onSubmit() {
     if (this.addCourseForm.valid) {
-      console.log('addCourseForm valid');
 
       this.addCourseForm.patchValue({
         teacherId: sessionStorage.getItem('userId')
@@ -30,7 +29,6 @@ export class AddCourseComponent {
       // שולחים את הנתונים ל-UserService לרישום
       this.coursesService.createCourse(this.addCourseForm.value).subscribe({
         next: (response) => {          
-          console.log('Course created successfully', response);
           this.router.navigate(['/home/courses']);
          
 

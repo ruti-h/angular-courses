@@ -18,6 +18,7 @@
         </div>
         <div class="button-container">
           <button mat-raised-button color="primary" type="submit" [disabled]="!editCourseForm.valid">Edit</button>
+          <button mat-button (click)="cancel()">cancel</button>
         </div>
       </form>
     </mat-card-content>

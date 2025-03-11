@@ -19,6 +19,23 @@
                         <mat-icon>edit</mat-icon>
                     </button>
                     }
+                    @if(userRole === "student") {
+                        @if(!isEnoled(c.id)) {
+                        <!-- <button mat-raised-button color="accent" (click)="AddPerson(c.id)">
+                            <mat-icon>add</mat-icon>
+                        </button> -->
+
+
+                        <button (click)="AddPerson(c.id)" class="custom-button">
+                            <mat-icon>group_add</mat-icon>
+                          </button>
+                        }
+                        @else {
+                        <button  mat-icon-button color="warn"  (click)="deletePerson(c.id)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        }
+                        }
                     <button mat-icon-button color="primary" (click)="showLesson(c, c.id)">
                         <mat-icon>preview</mat-icon>
                     </button>
@@ -29,23 +46,29 @@
     }
 </div>
 
-
-<!-- @if(courses.length > 0){
-<h1>רשימת קורסים</h1>
-<ul>
-    @for(c of courses; track c.title){
-    <li>
-        <h2>{{ c.title }}</h2>
-        <p>{{ c.description }} - תאור הקורס</p>
-        <div class="buttons">
-            @if(userRole==="teacher"){
-            <button (click)="delete(c.id)">❌</button>
-            <button (click)="editCourse(c.id)">🖊️</button>
-            <button (click)="showLesson(c,c.id)">לצפיה בקורס</button>
-            }
-
-        </div>
-    </li>
-    }
-</ul>
-} -->
+<!-- @if(courses.length > 0) {
+    <h1>רשימת קורסים</h1>
+    <ul>
+        @for(c of courses; track c.id) {
+        <li>
+            <h2>{{ c.title }}</h2>
+            <p>{{ c.description }} - תאור הקורס</p>
+            <div class="buttons">
+                @if(userRole === "teacher") {
+                <button (click)="delete(c.id)">מחק</button>
+                <button (click)="editCourse(c.id)">ערוך</button>
+                }
+                @if(userRole === "student") {
+                @if(!isEnoled(c.id)) {
+                <button (click)="AddPerson(c.id)">Enroll</button>
+                }
+                @else {
+                <button (click)="deletePerson(c.id)">Unenroll</button>
+                }
+                }
+                <button (click)="showLesson(c.id)">הצג שיעור</button>
+            </div>
+        </li>
+        }
+    </ul>
+    } -->

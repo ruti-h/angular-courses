@@ -20,7 +20,8 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl:'./show-courses.component.css'
 })
 export class ShowCoursesComponent implements OnInit {
-  courses: any[] = ['ffffffffffffff'];
+  courses: any[] = [];
+  studentcourses: any[] = [];
   errorMessage: string = '';
   userRole: string | null;
   token: string | null = '';
@@ -34,7 +35,6 @@ export class ShowCoursesComponent implements OnInit {
   
     this.coursesService.getCourses().subscribe({
       next: (data) => {
-        console.log("coursegfggbbbbbbbbs",data);
         this.courses = data;
       },
       error: (error) => {
@@ -46,7 +46,7 @@ export class ShowCoursesComponent implements OnInit {
   delete(id: number) {
     this.coursesService.deleteCourse(id).subscribe({
       next: (data) => {
-        console.log('data' + data);
+  
 
         this.courses = this.courses.filter(c => c.id != id);
       },
@@ -69,9 +69,66 @@ export class ShowCoursesComponent implements OnInit {
 
   }
   showLesson(token: any, id: any) {
-    console.log("hgfds");
-    
+ 
     this.router.navigate(['/show-lesson',id]);
 
   }
+  loadCoursesByStudent(): void {
+    const studentId = sessionStorage.getItem('userId');
+ 
+    
+    if (studentId) {
+      this.coursesService.getStudentCourses(studentId).subscribe({
+        next: (data) => {
+          this.studentcourses = data;  
+        },
+        error: (error) => {
+          console.error('Error fetching student courses:', error);
+        }
+      });
+    }
+  }
+  AddPerson(courseId: number) {
+    const userId = Number(sessionStorage.getItem('userId'));
+    if (!userId) {
+    alert('User not logged in.');
+      return;
+    }
+ 
+    
+    
+
+    this.coursesService.enrollStudent(courseId, userId).subscribe({
+      next: () => {
+        console.log('Student enrolled successfully');
+        this.loadCoursesByStudent(); // רענון רשימת הקורסים של הסטודנט
+      },
+      error: (error) => {
+        console.error('Error enrolling in course:', error);
+      }
+    });
+  }
+  deletePerson(courseId: number) {
+    const userId = Number(sessionStorage.getItem('userId'));
+    if (!userId) {
+      console.error('User not logged in.');
+      return;
+    }
+
+    this.coursesService.unenrollStudent(courseId, userId).subscribe({
+      next: () => {
+        console.log('Student unenrolled successfully');
+        this.loadCoursesByStudent(); // רענון רשימת הקורסים של הסטודנט
+
+      },
+      error: (error) => {
+        console.error('Error unenrolling from course:', error);
+      }
+    });
+  }
+
+  isEnoled(courseId: number): boolean {    
+    return this.studentcourses.some(course => course.id === courseId);
+  }
 }
+

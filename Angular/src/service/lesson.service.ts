@@ -35,10 +35,9 @@ export class LessonsService {
   updateLesson(id: number, courseId:number,updates: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${courseId}/lessons/${id}`, updates, { headers: this.getAuthHeaders() });
   }
-
   // מחיקת שיעור לפי ID
-  deleteLesson(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}/lessons`, { headers: this.getAuthHeaders() });
+  deleteLesson(id: number,courseId:number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${courseId}/lessons/${id}`,{headers:this.getAuthHeaders()});
   }
 }
 

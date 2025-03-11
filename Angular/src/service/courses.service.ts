@@ -12,7 +12,6 @@ export class CoursesService {
 
   private getHeaders(): HttpHeaders {
     const token = sessionStorage.getItem('token');
-    console.log("fghhhhhhhhhhhhhhhhhhh");
     
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`,
@@ -54,4 +53,22 @@ export class CoursesService {
   getCourseById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
+  
+  enrollStudent(courseId: number, userId: number): Observable<any> {
+
+    return this.http.post(`${this.apiUrl}/${courseId}/enroll`,{userId},{ headers: this.getHeaders() });
+   }
+ 
+ 
+   // הסרת סטודנט מקורס
+   unenrollStudent(courseId: number, userId: number): Observable<any> {
+ 
+     return this.http.delete(`${this.apiUrl}/${courseId}/unenroll`,{
+       body: { userId },headers: this.getHeaders()});
+   }
+ 
+   // שליפת כל הקורסים של סטודנט מסוים
+   getStudentCourses(studentId: string):Observable<any>{
+     return this.http.get<any>(`${this.apiUrl}/student/${studentId}`,{ headers: this.getHeaders() });
+   }
 }

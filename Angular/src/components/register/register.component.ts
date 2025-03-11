@@ -39,8 +39,7 @@ export class RegisterComponent implements OnInit {
     this.dialogRef.close();
   }
   ngOnInit(): void {
-    console.log(this.roles);
-
+   
     this.addUserForm = this.fb.group({
       userGroup: this.fb.group({
         email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -62,7 +61,7 @@ export class RegisterComponent implements OnInit {
         next: (response) => {
           // במקרה של הצלחה
           sessionStorage.setItem('role', role)
-          console.log('User registered successfully', response);
+      
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
           this.dialogRef.close(); // סוגר את הדיאלוג  

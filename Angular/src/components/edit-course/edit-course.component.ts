@@ -37,7 +37,6 @@ export class EditCourseComponent {
   this.id=Number(this.activatedRoute.snapshot.paramMap.get('id'));
    this.coursesService.getCourseById(this.id).subscribe({
     next: (response) => {   
-      console.log('course '+response.title)  ;     
      this.editCourseForm.patchValue({
       title:response.title,
       description:response.description,
@@ -56,7 +55,6 @@ export class EditCourseComponent {
       // שולחים את הנתונים ל-UserService לרישום
       this.coursesService.updateCourse(this.id?this.id:0,this.editCourseForm.value).subscribe({
         next: (response) => {          
-          console.log('Course created successfully', response);
           this.router.navigate(['/home/courses']);
         },
         error: (error) => {
@@ -66,6 +64,9 @@ export class EditCourseComponent {
       });
     
     }
+  }
+  cancel(){
+    this.router.navigate(['/home/courses']);
   }
 }
 

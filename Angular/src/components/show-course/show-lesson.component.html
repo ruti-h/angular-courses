@@ -1,28 +1,34 @@
 @if(lessons.length===0){
-    <h1>כרגע אין שעורים מוצגים בקורס זה</h1>
+<h1>כרגע אין שעורים מוצגים בקורס זה</h1>
+<button mat-button (click)="back()">לחזרה</button>
 }
-@if(lessons.length>0){
-<h1>רשימת שיעורים</h1>
-<ul>
-    @for(lesson of lessons; track lesson.title){
-    <li>
-        <h2>{{ lesson.title }}</h2>
-        <p>{{ lesson.content }} - תאור השיעור</p>
-        <div class="buttons">
-            <div>
-
-                <button mat-button (click)="delete(lesson.id)">❌</button>
-                <button mat-button (click)="editLesson(lesson.id)">🖊️</button>
-
-            </div>
-        </div>
-    </li>
+@if(role==='teacher'){
+<!-- <span class="icon add-lesson-icon" (click)="AddLesson()" matTooltip="הוסף שיעור">
+    <mat-icon color="primary" class="large-icon">add_circle_outline</mat-icon> -->
+        <button mat-fab color="primary" (click)="AddLesson()">+</button>
     }
-</ul>
-<!-- <ng-template #noLessons>
+    @if(lessons.length>0){
+    <h1>רשימת שיעורים</h1>
+    <ul>
+        @for(lesson of lessons; track lesson.title){
+        <li>
+            <h2>{{ lesson.title }}</h2>
+            <p>{{ lesson.content }} - תאור השיעור</p>
+            @if(role==='teacher'){
+            <div class="buttons">
+                <div>
+
+                    <button mat-button (click)="delete(lesson.id)">❌</button>
+                    <button mat-button (click)="editLesson(lesson.id)">🖊️</button>
+
+                </div>
+            </div>
+            }
+        </li>
+        }
+    </ul>
+    <!-- <ng-template #noLessons>
     <p>No lessons available for this course.</p>
 </ng-template> -->
-}
-<span class="icon add-lesson-icon" (click)="AddLesson()" matTooltip="הוסף שיעור">
-    <mat-icon color="primary" class="large-icon">add_circle_outline</mat-icon>
-<!-- <button mat-fab color="primary" (click)="AddLesson()">+</button> -->
+    }
+

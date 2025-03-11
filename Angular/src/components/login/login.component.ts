@@ -55,9 +55,9 @@ export class LoginComponent implements OnInit {
             this.userservice.isTeacher=true
           console.log( this.userservice.isTeacher);
           
-          console.log('User logged in successfully', response);
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('userId', response.userId);
+;
+          sessionStorage.setItem('token', response.token);
+          sessionStorage.setItem('userId', response.userId);
 
           this.dialogRef.close();
 

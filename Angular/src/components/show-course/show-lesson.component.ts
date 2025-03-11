@@ -1,19 +1,13 @@
 
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-
 import { MatIconModule } from '@angular/material/icon';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Lesson } from '../../models/lesson';
-import { ShowCoursesComponent } from '../show-courses/show-courses.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Course } from '../../models/course';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LessonsService } from '../../service/lesson.service';
 @Component({
@@ -42,13 +36,13 @@ export class ShowLessonComponent {
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.courseId = this.rote.snapshot.paramMap.get('id');
-    console.log("courseId:" + this.courseId)
+   
     this.courseData = sessionStorage.getItem('id');
   }
   ngOnInit() {
     this.lessonService.getLessonsByCourse(this.courseId).subscribe(
       (data) => {
-        console.log("lesons:"+data)
+      
         this.lessons = data; // שמירת המידע במערך
       },
       (error) => {
@@ -56,33 +50,30 @@ export class ShowLessonComponent {
       }
     );
   }
-  delete(lessonId: number | undefined) {
-    const courseId: number = this.courseData.id
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    });
+  delete(id: number) {
+    if (this.courseId)
+      this.lessonService.deleteLesson(id, this.courseId).subscribe({
+        next: (data) => {
 
-    // ודא שהכתובת נכונה
-    this.http.delete(`http://localhost:3000/api/courses/${courseId}/lessons/${lessonId}`, { headers })
-      .subscribe(
-        (response) => {
-          console.log('Lesson deleted successfully', response);
-          // עדכון המערך לאחר מחיקת השיעור
-          this.lessons = this.lessons.filter(lesson => lesson.id !== lessonId);
+          this.lessons = this.lessons.filter(l => l.id != id);
         },
-        (error) => {
-          console.error('Error deleting lesson', error); // טיפול בשגיאות
+        error: (error) => {
+          // this.errorMessage = 'Failed to load courses';
+          console.error(error);
         }
-      );
-    }
+      });;
+  }
   editLesson(id: number) {
-    console.log("lessonId",id);
-    console.log("courseId",this.courseId);
+   
     
     this.courseId
+    
     this.router.navigate(['/edit-lesson', this.courseId,id]);
   }
   AddLesson() {
     this.router.navigate(['/add-lesson',this.courseId]);
+  }
+  back(){
+    this.router.navigate(['/home/courses']);
   }
 }

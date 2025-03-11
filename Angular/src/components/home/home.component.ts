@@ -15,7 +15,6 @@ export class HomeComponent{
     this.userRole = sessionStorage.getItem('role');
   }
   showCourses() {
-    alert(this.userRole)
     this.router.navigate(['/home/courses'])
   }
   addCours(){
